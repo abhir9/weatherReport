@@ -1,0 +1,87 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (p) {
+        document.getElementById("lati").value=p.coords.latitude;
+		document.getElementById("longi").value=p.coords.longitude;
+ 
+    });
+} else {
+    alert('Geo Location feature is not supported in this browser.');
+}
+
+function change(field)
+{
+if(document.getElementById('city')== field)
+{
+document.getElementById('citytext').setAttribute('style','visibility:visible');
+document.getElementById('longi').setAttribute('style','visibility:hidden');
+document.getElementById('lati').setAttribute('style','visibility:hidden');
+}
+if(document.getElementById('cur')== field)
+{
+document.getElementById('longi').setAttribute('style','visibility:visible');
+document.getElementById('lati').setAttribute('style','visibility:visible');
+document.getElementById('citytext').setAttribute('style','visibility:hidden');
+}
+}
+</script>
+	<style>
+        body        { padding-top:80px; }
+    </style>
+	
+</head>
+<body>
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-cloud"></span>Weather Forecast</h1>
+
+    <!-- LOGIN FORM -->
+    <form action="/weather" method="post">
+        <div class="form-group">
+		<table class="table">
+    <tbody>
+      <tr>
+        <td>
+         <input type="button" id="city" class="btn btn-success btn-lg" value="Custome City" onClick="change(this)">
+		</td>
+		<td>
+		<input id="citytext" type="text" class="form-control" name="citytext" style="visibility:hidden">
+		</td>
+      </tr>
+	  <tr>
+        <td>
+        <input type="button" id="cur" class="btn btn-success btn-lg"  value="Current Location " onClick="change(this)"> 
+		</td>
+	 	<td>
+	     <input id="longi" class="form-control" type="text"  style="visibility:hidden">
+            <input id="lati" class="form-control" type="text"  style="visibility:hidden">
+      
+		</td>
+      </tr>
+	  
+	  
+	  
+    </tbody>
+  </table>
+            
+		  </div>
+        <button type="submit" class="btn btn-success btn-lg">Forecast</button>
+		
+			
+    </form>
+    <hr>
+</div>
+
+</div>
+</body>
+</html>
