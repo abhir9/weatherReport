@@ -1,15 +1,13 @@
 {
-  "name": "weather",
+  "name": "weather_Report",
   "version": "1.0.0",
-  "description": "",
+  "description": "weather Report",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
     "start": "node server.js"
-  },
+   },
   "keywords": [
-    "Node.js",
-    "mongoDb"
+    "Node.js"
   ],
   "author": "Abhimanyu Singh Rathore",
   "license": "MIT",
@@ -18,7 +16,6 @@
     "express": "^4.14.0",
     "morgan": "^1.7.0",
 	"request":"2.74.0",
-	"body-parser":"*"
-	
+	"body-parser":"1.15.2"	
   }
 }

@@ -3,7 +3,7 @@
 var express = require('express');
 var logger = require('morgan');
 var routes = require('./routes/index');
-var bodyParser = require('body-parser');	
+var bodyParser = require('body-parser');
 var app = express();
 
 
@@ -11,11 +11,9 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(bodyParser.json());
-
-app.set('view engine', 'ejs');	
+app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-app.use('/weather', routes);
+app.use('/', routes);
 
 
 
