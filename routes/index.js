@@ -2,6 +2,7 @@
 var express = require("express");
 var router = express.Router();
 var request = require('request');
+var config = require('../config/config');
 router.get("/weather", function(req, res) {
 	res.render('weather');
 });
@@ -12,7 +13,7 @@ router.post("/weatherByCity", function(req, res, next) {
 		if (city.length >= 1) {
 			for (var i = 0; i < city.length; i++) {
 				request({
-					url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city[i] + ',IN&cnt=14&appid=9141d449cd7f0584409c62f39e36b4d2',
+					url: config.host_string+'q=' + city[i] + ',IN&cnt='+config.count+'&'+config.appid_string,
 					method: 'GET'
 				}, function(error, response, body) {
 					if (error) {
@@ -58,7 +59,7 @@ router.post("/weatherByGeo", function(req, res, next) {
 	var tempresponse = '';
 	var coord = req.body.lonlat.split(",");
 	request({
-		url: 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + coord[0] + '&lon=' + coord[1] + '&cnt=14&appid=9141d449cd7f0584409c62f39e36b4d2',
+		url: config.host_string+'lat=' + coord[0] + '&lon=' + coord[1] + '&cnt='+config.count+'&'+config.appid_string,
 		method: 'GET'
 	}, function(error, response, body) {
 		if (error) {
@@ -90,7 +91,7 @@ router.post("/weatherByGeo", function(req, res, next) {
 router.post("/weatherById", function(req, res, next) {
 	var tempresponse = '';
 	request({
-		url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id='+req.body.geoid+'&cnt=14&appid=9141d449cd7f0584409c62f39e36b4d2',
+		url: config.host_string+'id='+req.body.geoid+'&cnt='+config.count+'&'+config.appid_string,
 		method: 'GET'
 	}, function(error, response, body) {
 		if (error) {

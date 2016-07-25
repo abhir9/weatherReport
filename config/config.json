@@ -1,0 +1,5 @@
+{
+"host_string" : "http://api.openweathermap.org/data/2.5/forecast/daily?",
+"count":"14",
+"appid_string":"appid=9141d449cd7f0584409c62f39e36b4d2"
+}
