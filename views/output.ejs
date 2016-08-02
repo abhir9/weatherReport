@@ -3,16 +3,21 @@
 <html>
    <head>
       <title>Weather Forecast</title>
-
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+      <!-- load bootstrap css -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      <style>
+         body        { padding-top:80px; }
+      </style>
 
 	  </head>
    <body>
-   </body>
+         <div class="container">
 <script language="javascript" type="text/javascript">
 
 var data= <%- JSON.stringify(data)%>;
 		
- var myTable='<table border=1> <tr><th> city  </th><th> day 1  </th><th> day 2  </th><th> day 3  </th><th> day 4  </th><th> day 5  </th><th> day 6  </th><th> day 7  </th><th> day 8  </th><th> day 9  </th><th> day 10  </th><th> day 11  </th><th> day 12  </th><th> day 13  </th><th> day 14  </th></tr>';	
+ var myTable='<table class=table border=1> <thead class= thead-inverse ><th> city  </th><th> day 1  </th><th> day 2  </th><th> day 3  </th><th> day 4  </th><th> day 5  </th><th> day 6  </th><th> day 7  </th><th> day 8  </th><th> day 9  </th><th> day 10  </th><th> day 11  </th><th> day 12  </th><th> day 13  </th><th> day 14  </th></thead>';	
  data.forEach(function(response) {
     myTable+='<tr><td>'+ response.message.city.name +'</td>';
 	var listdata=response.message.list;
@@ -25,5 +30,8 @@ var data= <%- JSON.stringify(data)%>;
 	myTable+='</table>';
 	document.write( myTable);
 </script>
+</div>
+   </body>
+
 </html>
 
