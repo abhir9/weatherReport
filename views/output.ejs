@@ -1,0 +1,29 @@
+<!-- views/output.ejs -->
+<!doctype html>
+<html>
+   <head>
+      <title>Weather Forecast</title>
+
+
+	  </head>
+   <body>
+   </body>
+<script language="javascript" type="text/javascript">
+
+var data= <%- JSON.stringify(data)%>;
+		
+ var myTable='<table border=1> <tr><th> city  </th><th> day 1  </th><th> day 2  </th><th> day 3  </th><th> day 4  </th><th> day 5  </th><th> day 6  </th><th> day 7  </th><th> day 8  </th><th> day 9  </th><th> day 10  </th><th> day 11  </th><th> day 12  </th><th> day 13  </th><th> day 14  </th></tr>';	
+ data.forEach(function(response) {
+    myTable+='<tr><td>'+ response.message.city.name +'</td>';
+	var listdata=response.message.list;
+	listdata.forEach(function(message)
+	{    myTable+='<td>'+message.temp.day+'</td>';
+	});
+	myTable+='</tr>';
+
+	});
+	myTable+='</table>';
+	document.write( myTable);
+</script>
+</html>
+
